@@ -12,7 +12,7 @@ Before powering on the board, ensure that:
 2. The **JTAG / SD switch** on the board is set to **SD** mode.  
 3. Connect the PROG-UART interface of the AUP-ZU3 board to the host PC via a USB-C cable.
 
-If you see the **DONE** LED light turn on, congratulations — you have successfully booted the board!
+If you see the **DONE** LED light turn on after powering on the board, congratulations — you have successfully booted the board!
 
 
 ---
