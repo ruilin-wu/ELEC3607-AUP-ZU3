@@ -111,5 +111,5 @@ Once completed, you will have access to the Petalinux shell on the AUP-ZU3 board
 
 
 
-Important components on the AUP-ZU3 (marked in red):
+## Important components on the AUP-ZU3 (marked in red):
 ![9](./image/9.png)
