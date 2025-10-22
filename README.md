@@ -9,7 +9,7 @@ This repository contains project files and resources for the **ELEC3607 Embedded
 ##  Per-Lab Dependency Summary
 
 | Lab |  Required Libraries |
-|------|--------|--------------------|
+|------|--------------------|
 | **Lab 1 – GPIO**  | `libgpiod-dev`, `libgpiod-tools` |
 | **Lab 2 – Si5351**   | `i2c-tools`, `libi2c-dev` |
 | **Lab 3 – Tayloe**  `i2c-tools`, `libi2c-dev` |
