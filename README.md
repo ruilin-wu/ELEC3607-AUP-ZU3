@@ -15,7 +15,7 @@ This repository contains project files and resources for the **ELEC3607 Embedded
 | **Lab 3 – Tayloe**  |`i2c-tools`, `libi2c-dev` |
 | **Lab 4 – WSPR Decoder**  | `pulseaudio`, `libpulse-dev`, `pipewire`, `sox`, `pulseaudio-utils`, `libfftw3-dev` |
 | **Lab 5 – PCB**  | None |
-| **Lab 6 – WSPR Implementation** | `gcc` (included in `packagegroup-core-buildessential`), `make`, `gdb` |
+| **Lab 6 – WSPR Implementation** | `gcc` (included in `packagegroup-core-buildessential`), `make` |
 | **Lab 7 – A64 Assembly** | `binutils`, `make`, `libc-dev`, `gdb` |
 
 ---
