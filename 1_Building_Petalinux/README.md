@@ -9,14 +9,18 @@ Download the latest PetaLinux tools (version **2024.1** ) from [AMD’s official
 
 ---
 
-## Requirements
-
-- **PetaLinux 2024.1 or 2024.2**
-- Linux host system (e.g. Ubuntu 20.04 or later)
+## AUP-ZU3-BSP Download
+Download the BSP tools of AUP-ZU3 from [RealDigital github website](https://github.com/RealDigitalOrg/aup-zu3-bsp)
 
 ---
 
-## ⚙️ Build Steps
+## Requirements
+- **PetaLinux 2024.1**
+- Linux host system (e.g. Ubuntu 22.04.3)
+
+---
+
+## Build Steps
 
 ### 1. Create PetaLinux Project
 
@@ -54,10 +58,6 @@ NOTE: Tasks Summary: All succeeded.
 [INFO] Successfully built project
 ```
 
-> ⚠️ Possible warnings:
-> - `XSCT has been deprecated` — safe to ignore.
-> - `Failed to copy built images to tftp dir` — non-critical unless using TFTP boot.
-
 ---
 
 ### 3. Generate BOOT.BIN
@@ -84,40 +84,24 @@ petalinux-package boot --u-boot --fpga --force
 The generated files will be located in:
 
 ```
-/home/aupzu3/aup-zu3-bsp/sw/zu3_linux/images/linux/
+aup-zu3-bsp/sw/zu3_linux/images/linux/
 ```
 
 ---
 
-## 📁 Output Files
+##  Output Files
+
+Only the following four files are required for booting the AUP-ZU3 board:
 
 | File | Description |
 |------|--------------|
 | `BOOT.BIN` | Boot image containing FSBL, PMUFW, bitstream, ATF, DTB, and U-Boot |
+| `boot.scr` | U-Boot boot script |
 | `image.ub` | Combined Linux kernel and device tree |
-| `rootfs.tar.gz` | Minimal root filesystem |
-| `system.dtb` | Device tree blob |
+| `rootfs.ext4` | Root filesystem image |
+
+Below is an example of output files :
+![PetaLinux Build Overview](./image/1.png)
 
 ---
 
-## 🖼️ Directory Overview
-
-Below is an example build flow illustration (optional):
-
-![PetaLinux Build Overview](./image/build_flow.png)
-
----
-
-## ✅ Summary
-
-After completing these steps, you will have successfully built the **PetaLinux image** and **BOOT.BIN** for the AUP-ZU3 board.  
-These files can now be used for SD card boot or JTAG-based Linux boot testing on the ELEC3607 development setup.
-
----
-
-**Author:** ELEC3607 Teaching Team  
-**Board:** AUP-ZU3 (Zynq UltraScale+ MPSoC)  
-**Tool Version:** Vitis/Vivado/PetaLinux 2024.1–2024.2
-
-
-![AUP-ZU3 Board Setup](./image/1.png)
