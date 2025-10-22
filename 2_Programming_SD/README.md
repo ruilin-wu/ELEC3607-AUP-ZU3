@@ -176,7 +176,7 @@ Expected files:
 ```
 BOOT.BIN  boot.scr  image.ub
 ```
-
+Or
 ```bash
 sudo mkdir -p /mnt/rootfs
 sudo mount /dev/sdb2 /mnt/rootfs
