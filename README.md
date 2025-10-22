@@ -15,7 +15,7 @@ This repository contains project files and resources for the **ELEC3607 Embedded
 | **Lab 3 – (if applicable) I²C Extension/ADC** | Same as Lab 2 | `i2c-tools`, `libi2c-dev` |
 | **Lab 4 – WSPR Decoder** | PulseAudio input and FFT signal decoding | `pulseaudio`, `libpulse-dev`, `pipewire`, `sox`, `pulseaudio-utils`, `libfftw3-dev` |
 | **Lab 5 – WSPR Integration** | Integrating the audio chain and timing synchronization | Same as Lab 4 + `i2c-tools` (for Si5351 frequency source) |
-| **Lab 6 – C Function Calls** | Stack frame analysis and function calls | `gcc` *(included in `packagegroup-core-buildessential`)*, `make`, `gdb` |
+| **Lab 6 – C Function Calls** | Stack frame analysis and function calls | `gcc` (included in `packagegroup-core-buildessential`), `make`, `gdb` |
 | **Lab 7 – A64 Assembly** | Assembly language, debugging, and disassembly | `binutils`, `make`, `libc-dev`, `gdb` |
 
 ---
