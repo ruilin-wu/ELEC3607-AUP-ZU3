@@ -4,19 +4,13 @@ This document provides step-by-step instructions to build a **PetaLinux image** 
 
 ---
 
-## 📦 PetaLinux Download
-
-Download the latest PetaLinux tools (version **2024.1** or newer) from AMD’s official website:
-
-👉 [https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools/2024-1.html](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools/2024-1.html)
+## PetaLinux Download
+Download the latest PetaLinux tools (version **2024.1** ) from [AMD’s official website](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools/2024-1.html)
 
 ---
 
-## 🧰 Requirements
+## Requirements
 
-- **AUP-ZU3 Development Board**
-- **Vivado 2024.1 or 2024.2**
-- **Vitis 2024.1 or 2024.2**
 - **PetaLinux 2024.1 or 2024.2**
 - Linux host system (e.g. Ubuntu 20.04 or later)
 
