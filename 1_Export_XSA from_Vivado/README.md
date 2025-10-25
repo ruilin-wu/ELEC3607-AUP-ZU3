@@ -111,7 +111,7 @@ set_property IOSTANDARD LVCMOS33 [get_ports RBP_GPIO_tri_io*]
 
 Then open Block Design and add an **axi_iic_RPI** module and change the interface of the **rbp_gpio** module from [27:0] to [25:0].
 
-**Note: I haven't added the connection of iic2intc_irpt for interrupt yet, maybe this is a serious problem?**
+**Note: I haven't added the connection of iic2intc_irpt for interrupt routine, maybe this is a serious problem?**
 <p align="center">
   <img src="./image/2.png" alt="2" width="400"/>
 </p>
