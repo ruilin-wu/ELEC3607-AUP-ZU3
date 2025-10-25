@@ -46,7 +46,7 @@ petalinux-config -c rootfs
 
 ![8](./image/8.png)
 
-2.Go to **Filesystems Packages-base-i2c-tools**
+2.Go to **Filesystems Packages-base-i2c-tools**, select 
 
 ![2](./image/2.png)
 
