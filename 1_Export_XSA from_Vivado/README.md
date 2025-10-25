@@ -120,3 +120,5 @@ The custom settings of **axi_iic_RPI** module is shown as below:
 <p align="center">
   <img src="./image/3.png" alt="3" width="600"/>
 </p>
+
+After generating the bitstream, Export Hardware generates an xsa file(named iic-8GB.xsa) containing the bitstream.
