@@ -22,14 +22,20 @@ Download the BSP tools of AUP-ZU3 from [RealDigital github website](https://gith
 
 ## Build Steps
 
-### 1. Create PetaLinux Project
+### 1. Create a Vivado Project
+First Using "git clone", install "https://github.com/Digilent/vivado-library.git" repository in "~/Src"
 
-To create a new PetaLinux project from the BSP file:
+To create a new vivado project from the tcl file:
 
 ```bash
-cd ~/aup-zu3-bsp/sw
-petalinux-create project -n zu3_linux -s petalinux-8GB.bsp
+cd ~/aup-zu3-bsp/hw
+vivado -mode batch -source hw-8GB.tcl
+vivado hw/hw.xpr
 ```
+
+### 2. Add a IIC interface for RPI pin
+
+
 
 **Key output:**
 ```
