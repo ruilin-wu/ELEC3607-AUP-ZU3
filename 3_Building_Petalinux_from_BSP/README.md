@@ -42,24 +42,20 @@ petalinux-create project -n zu3_linux -s petalinux-8GB.bsp
 cd zu3_linux
 petalinux-config -c rootfs
 ```
-1.Go to **Filesystems Packages-console-network-openssh**
+1.Go to **Filesystems Packages-console-network-openssh**, select 
 
-Select 
 ![8](./image/8.png)
 
 2.Go to **Filesystems Packages-base-i2c-tools**
 
-Select 
 ![2](./image/2.png)
 
-3.Go to **Filesystems Packages-libs-libgpiod**
+3.Go to **Filesystems Packages-libs-libgpiod**, select 
 
-Select 
 ![3](./image/3.png)
 
-4.Go to **Filesystems Packages-misc-packagegroup-core-buildessential**
+4.Go to **Filesystems Packages-misc-packagegroup-core-buildessential**, select 
 
-Select 
 ![5](./image/5.png)
 
 5.Add 
@@ -68,10 +64,10 @@ CONFIG_libfftwf
 CONFIG_sox
 CONFIG_libgpiod-tools
 ```
-to **project-spec/meta-user/conf/user-rootfsconfig**
+to **project-spec/meta-user/conf/user-rootfsconfig**.
 
-Then go to User packages
-Select 
+Then go to User packages, select 
+
 ![6](./image/6.png)
 
 ---
