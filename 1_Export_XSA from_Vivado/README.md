@@ -72,7 +72,7 @@ set_property PACKAGE_PIN AA8 [get_ports {RBP_GPIO_tri_io[26]}]
 set_property PACKAGE_PIN AH14 [get_ports {RBP_GPIO_tri_io[27]}]
 set_property IOSTANDARD LVCMOS33 [get_ports RBP_GPIO_tri_io*]
 ```
-Change to
+change to
 ```
 ## IIC control RPi
 set_property PACKAGE_PIN AC12 [get_ports i2c_RPI_sda_io]
@@ -108,3 +108,6 @@ set_property PACKAGE_PIN AA8 [get_ports {RBP_GPIO_tri_io[24]}]
 set_property PACKAGE_PIN AH14 [get_ports {RBP_GPIO_tri_io[25]}]
 set_property IOSTANDARD LVCMOS33 [get_ports RBP_GPIO_tri_io*]
 ```
+
+Then open Block Design and add an axi_iic_RPI module and change the interface of the rbp_gpio module from [27:0] to [25:0].
+![2](./image/2.png)
