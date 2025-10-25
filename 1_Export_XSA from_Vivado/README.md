@@ -111,6 +111,10 @@ set_property IOSTANDARD LVCMOS33 [get_ports RBP_GPIO_tri_io*]
 
 Then open Block Design and add an **axi_iic_RPI** module and change the interface of the **rbp_gpio** module from [27:0] to [25:0].
 <p align="center">
-  <img src="./image/2.png" alt="Block Design" width="400"/>
+  <img src="./image/2.png" alt="2" width="400"/>
 </p>
 
+The custom settings of **axi_iic_RPI** module is shown as below:
+<p align="center">
+  <img src="./image/3.png" alt="3" width="500"/>
+</p>
