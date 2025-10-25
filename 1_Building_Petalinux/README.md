@@ -37,6 +37,38 @@ petalinux-create project -n zu3_linux -s petalinux-8GB.bsp
 [INFO] New project successfully created in /home/aupzu3/aup-zu3-bsp/sw/zu3_linux
 ```
 
+**Custom settings:**
+```bash
+cd zu3_linux
+petalinux-config -c rootfs
+```
+Go to Filesystems Packages-console-network-openssh-
+Select 
+![8](./image/8.png)
+
+Go to Filesystems Packages-base-i2c-tools-
+Select 
+![2](./image/2.png)
+
+Go to Filesystems Packages-libs-libgpiod
+Select 
+![3](./image/3.png)
+
+Go to Filesystems Packages-misc-packagegroup-core-buildessential
+Select 
+![5](./image/5.png)
+
+Add 
+```
+CONFIG_fftw
+CONFIG_sox
+CONFIG_libgpiod-tools
+```
+to project-spec/meta-user/conf/user-rootfsconfig
+Then go to User packages
+Select 
+![6](./image/6.png)
+
 ---
 
 ### 2. Build the Project
@@ -44,7 +76,7 @@ petalinux-create project -n zu3_linux -s petalinux-8GB.bsp
 After creating the project, navigate into the project directory and build it:
 
 ```bash
-cd zu3_linux
+
 petalinux-build
 ```
 
