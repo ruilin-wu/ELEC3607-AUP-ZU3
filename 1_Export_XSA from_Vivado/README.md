@@ -34,117 +34,78 @@ vivado hw/hw.xpr
 ```
 
 ### 2. Add a IIC interface for RPI pin
+![1](./image/1.png)
 
+The PCB diagram above tells us that GPIO2 and GPIO3 represent SDA and SCL on the RPi respectively. Initially, all pins of the RPi are controlled by GPIO. We will separate SDA and SCL and control them through an IIC interface.
 
-
-**Key output:**
+First, change the mpsoc.xdc in Constraints:
 ```
-[INFO] Create project: zu3_linux
-[INFO] New project successfully created in /home/aupzu3/aup-zu3-bsp/sw/zu3_linux
-```
+## Rasbery PI Headers
 
-**Custom settings:**
-```bash
-cd zu3_linux
-petalinux-config -c rootfs
-```
-1.Go to **Filesystems Packages-console-network-openssh**
+set_property PACKAGE_PIN AF10 [get_ports {RBP_GPIO_tri_io[0]}]
+set_property PACKAGE_PIN AG10 [get_ports {RBP_GPIO_tri_io[1]}]
+set_property PACKAGE_PIN AC12 [get_ports {RBP_GPIO_tri_io[2]}]
+set_property PACKAGE_PIN AD12 [get_ports {RBP_GPIO_tri_io[3]}]
+set_property PACKAGE_PIN AE12 [get_ports {RBP_GPIO_tri_io[4]}]
+set_property PACKAGE_PIN AE10 [get_ports {RBP_GPIO_tri_io[5]}]
+set_property PACKAGE_PIN AB11 [get_ports {RBP_GPIO_tri_io[6]}]
+set_property PACKAGE_PIN AD11 [get_ports {RBP_GPIO_tri_io[7]}]
+set_property PACKAGE_PIN AG11 [get_ports {RBP_GPIO_tri_io[8]}]
+set_property PACKAGE_PIN AH11 [get_ports {RBP_GPIO_tri_io[9]}]
+set_property PACKAGE_PIN AH12 [get_ports {RBP_GPIO_tri_io[10]}]
+set_property PACKAGE_PIN AH10 [get_ports {RBP_GPIO_tri_io[11]}]
+set_property PACKAGE_PIN AD10 [get_ports {RBP_GPIO_tri_io[12]}]
+set_property PACKAGE_PIN AA11 [get_ports {RBP_GPIO_tri_io[13]}]
+set_property PACKAGE_PIN AE15 [get_ports {RBP_GPIO_tri_io[14]}]
+set_property PACKAGE_PIN AF13 [get_ports {RBP_GPIO_tri_io[15]}]
+set_property PACKAGE_PIN AB10 [get_ports {RBP_GPIO_tri_io[16]}]
+set_property PACKAGE_PIN AG14 [get_ports {RBP_GPIO_tri_io[17]}]
+set_property PACKAGE_PIN AC11 [get_ports {RBP_GPIO_tri_io[18]}]
+set_property PACKAGE_PIN AB9 [get_ports {RBP_GPIO_tri_io[19]}]
+set_property PACKAGE_PIN AA10 [get_ports {RBP_GPIO_tri_io[20]}]
+set_property PACKAGE_PIN Y9 [get_ports {RBP_GPIO_tri_io[21]}]
+set_property PACKAGE_PIN AH13 [get_ports {RBP_GPIO_tri_io[22]}]
+set_property PACKAGE_PIN AG13 [get_ports {RBP_GPIO_tri_io[23]}]
+set_property PACKAGE_PIN AF12 [get_ports {RBP_GPIO_tri_io[24]}]
+set_property PACKAGE_PIN AF11 [get_ports {RBP_GPIO_tri_io[25]}]
+set_property PACKAGE_PIN AA8 [get_ports {RBP_GPIO_tri_io[26]}]
+set_property PACKAGE_PIN AH14 [get_ports {RBP_GPIO_tri_io[27]}]
+set_property IOSTANDARD LVCMOS33 [get_ports RBP_GPIO_tri_io*]
 
-Select 
-![8](./image/8.png)
+Change to
 
-2.Go to **Filesystems Packages-base-i2c-tools**
+## IIC control RPi
+set_property PACKAGE_PIN AC12 [get_ports i2c_RPI_sda_io]
+set_property PACKAGE_PIN AD12 [get_ports i2c_RPI_scl_io]
+set_property IOSTANDARD LVCMOS33 [get_ports i2c_RPI_*]
 
-Select 
-![2](./image/2.png)
-
-3.Go to **Filesystems Packages-libs-libgpiod**
-
-Select 
-![3](./image/3.png)
-
-4.Go to **Filesystems Packages-misc-packagegroup-core-buildessential**
-
-Select 
-![5](./image/5.png)
-
-5.Add 
-```
-CONFIG_libfftwf
-CONFIG_sox
-CONFIG_libgpiod-tools
-```
-to **project-spec/meta-user/conf/user-rootfsconfig**
-
-Then go to User packages
-Select 
-![6](./image/6.png)
-
----
-
-### 2. Build the Project
-
-After creating the project, navigate into the project directory and build it:
-
-```bash
-
-petalinux-build
-```
-
-**Key output:**
-```
-[INFO] Building project
-[INFO] Getting Platform info from HW file
-[INFO] Generating Kconfig for project
-[INFO] bitbake petalinux-image-minimal
-NOTE: Tasks Summary: All succeeded.
-[INFO] Successfully built project
-```
-
----
-
-### 3. Generate BOOT.BIN
-
-Once the build completes, generate the boot image with:
-
-```bash
-petalinux-package boot --u-boot --fpga --force
-```
-
-**Key output:**
-```
-[INFO] File in BOOT BIN: zynqmp_fsbl.elf
-[INFO] File in BOOT BIN: pmufw.elf
-[INFO] File in BOOT BIN: hw_8GB.bit
-[INFO] File in BOOT BIN: bl31.elf
-[INFO] File in BOOT BIN: system.dtb
-[INFO] File in BOOT BIN: u-boot.elf
-[INFO] Generating zynqmp binary package BOOT.BIN...
-[INFO] Binary is ready.
-[INFO] Successfully Generated BIN File
-```
-
-The generated files will be located in:
+## Rasbery PI Headers
+set_property PACKAGE_PIN AF10 [get_ports {RBP_GPIO_tri_io[0]}]
+set_property PACKAGE_PIN AG10 [get_ports {RBP_GPIO_tri_io[1]}]
+set_property PACKAGE_PIN AE12 [get_ports {RBP_GPIO_tri_io[2]}]
+set_property PACKAGE_PIN AE10 [get_ports {RBP_GPIO_tri_io[3]}]
+set_property PACKAGE_PIN AB11 [get_ports {RBP_GPIO_tri_io[4]}]
+set_property PACKAGE_PIN AD11 [get_ports {RBP_GPIO_tri_io[5]}]
+set_property PACKAGE_PIN AG11 [get_ports {RBP_GPIO_tri_io[6]}]
+set_property PACKAGE_PIN AH11 [get_ports {RBP_GPIO_tri_io[7]}]
+set_property PACKAGE_PIN AH12 [get_ports {RBP_GPIO_tri_io[8]}]
+set_property PACKAGE_PIN AH10 [get_ports {RBP_GPIO_tri_io[9]}]
+set_property PACKAGE_PIN AD10 [get_ports {RBP_GPIO_tri_io[10]}]
+set_property PACKAGE_PIN AA11 [get_ports {RBP_GPIO_tri_io[11]}]
+set_property PACKAGE_PIN AE15 [get_ports {RBP_GPIO_tri_io[12]}]
+set_property PACKAGE_PIN AF13 [get_ports {RBP_GPIO_tri_io[13]}]
+set_property PACKAGE_PIN AB10 [get_ports {RBP_GPIO_tri_io[14]}]
+set_property PACKAGE_PIN AG14 [get_ports {RBP_GPIO_tri_io[15]}]
+set_property PACKAGE_PIN AC11 [get_ports {RBP_GPIO_tri_io[16]}]
+set_property PACKAGE_PIN AB9 [get_ports {RBP_GPIO_tri_io[17]}]
+set_property PACKAGE_PIN AA10 [get_ports {RBP_GPIO_tri_io[18]}]
+set_property PACKAGE_PIN Y9 [get_ports {RBP_GPIO_tri_io[19]}]
+set_property PACKAGE_PIN AH13 [get_ports {RBP_GPIO_tri_io[20]}]
+set_property PACKAGE_PIN AG13 [get_ports {RBP_GPIO_tri_io[21]}]
+set_property PACKAGE_PIN AF12 [get_ports {RBP_GPIO_tri_io[22]}]
+set_property PACKAGE_PIN AF11 [get_ports {RBP_GPIO_tri_io[23]}]
+set_property PACKAGE_PIN AA8 [get_ports {RBP_GPIO_tri_io[24]}]
+set_property PACKAGE_PIN AH14 [get_ports {RBP_GPIO_tri_io[25]}]
+set_property IOSTANDARD LVCMOS33 [get_ports RBP_GPIO_tri_io*]
 
 ```
-aup-zu3-bsp/sw/zu3_linux/images/linux/
-```
-
----
-
-##  Output Files
-
-Only the following four files are required for booting the AUP-ZU3 board:
-
-| File | Description |
-|------|--------------|
-| `BOOT.BIN` | Boot image containing FSBL, PMUFW, bitstream, ATF, DTB, and U-Boot |
-| `boot.scr` | U-Boot boot script |
-| `image.ub` | Combined Linux kernel and device tree |
-| `rootfs.ext4` | Root filesystem image |
-
-Below is an example of output files :
-![PetaLinux Build Overview](./image/1.png)
-
----
-
