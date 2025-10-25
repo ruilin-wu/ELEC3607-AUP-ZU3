@@ -1,11 +1,11 @@
-# Building PetaLinux for AUP-ZU3 (ELEC3607)
+# Export XSA from Vivado for AUP-ZU3 (ELEC3607)
 
-This document provides step-by-step instructions to build a **PetaLinux image** for the **AUP-ZU3** development board used in the **ELEC3607 Embedded Systems Design** course.
+This document provides step-by-step instructions to build a XSA file for the **AUP-ZU3** development board used in the **ELEC3607 Embedded Systems Design** course.
 
 ---
 
-## PetaLinux Download
-Download the latest PetaLinux tools (version **2024.1** ) from [AMD’s official website](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools/2024-1.html)
+## Vitis Download
+Download the latest Vitis tools (version **2024.1** ) from [AMD’s official website](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis/2024-1.html)
 
 ---
 
@@ -15,7 +15,7 @@ Download the BSP tools of AUP-ZU3 from [RealDigital github website](https://gith
 ---
 
 ## Requirements
-- **PetaLinux 2024.1**
+- **Vivado 2024.1**
 - Linux host system (e.g. Ubuntu 22.04.3)
 
 ---
@@ -64,7 +64,7 @@ Select
 
 5.Add 
 ```
-CONFIG_fftw
+CONFIG_libfftwf
 CONFIG_sox
 CONFIG_libgpiod-tools
 ```
