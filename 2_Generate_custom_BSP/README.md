@@ -98,7 +98,7 @@ For pl.dtsi:
   <img src="./image/5.png" alt="5" width="1200"/>
 </p>
 <p align="center">
-  <img src="./image/6.png" alt="6" width="1200"/>
+  <img src="./image/9.png" alt="9" width="1200"/>
 </p>
 We can see that we successfully added an IIC interface to replace the two RPi GPIO pins.
 
