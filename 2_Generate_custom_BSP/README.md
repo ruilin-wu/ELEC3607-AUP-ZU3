@@ -11,7 +11,7 @@ petalinux-config --get-hw-description=/your_path/iic-8GB.xsa
 ```
 Select Exit since we don't know the differences yet.
 
-You can also generate a device tree:
+You also need to generate a device tree:
 ```
 petalinux-config -c device-tree
 ```
@@ -33,18 +33,47 @@ cd ..
 bash compare.sh original-1026-1826 iic-8GB-1026-1802
 ```
 
+The full output file is in **project_spec_full_diff_20251026_195230.txt**. After comparison and analysis, we removed a series of intermediate files and folders and selected the most noteworthy differences.
+
+#### Project core configuration
+```
+- A: original-1026-1826/project-spec/configs/config
+  B: iic-8GB-1026-1802/project-spec/configs/config
+```
 
 
+#### Device Tree Related
+
+```
+- A: original-1026-1826/components/plnx_workspace/device-tree/device-tree/device-tree.mss
+  B: iic-8GB-1026-1802/components/plnx_workspace/device-tree/device-tree/device-tree.mss
+- A: original-1026-1826/components/plnx_workspace/device-tree/device-tree/hardware_description.xsa
+  B: iic-8GB-1026-1802/components/plnx_workspace/device-tree/device-tree/hardware_description.xsa
+- A: original-1026-1826/components/plnx_workspace/device-tree/device-tree/pcw.dtsi
+  B: iic-8GB-1026-1802/components/plnx_workspace/device-tree/device-tree/pcw.dtsi
+- A: original-1026-1826/components/plnx_workspace/device-tree/device-tree/system-conf.dtsi
+  B: iic-8GB-1026-1802/components/plnx_workspace/device-tree/device-tree/system-conf.dtsi
+- A: original-1026-1826/components/plnx_workspace/device-tree/device-tree/system-top.dts
+  B: iic-8GB-1026-1802/components/plnx_workspace/device-tree/device-tree/system-top.dts
+- A: original-1026-1826/components/plnx_workspace/device-tree/device-tree/pl.dtsi
+  B: iic-8GB-1026-1802/components/plnx_workspace/device-tree/device-tree/pl.dtsi
+- A: original-1026-1826/project-spec/configs/plnx_syshw_data
+  B: iic-8GB-1026-1802/project-spec/configs/plnx_syshw_data
+  
+- A: original-1026-1826/project-spec/meta-user/recipes-bsp/device-tree/files/system-user.dtsi
+  B: iic-8GB-1026-1802/project-spec/meta-user/recipes-bsp/device-tree/files/system-user.dtsi
+```
 
 
+#### Kernel Customization and Configuration
 
 
+```
+- A: original-1026-1826/project-spec/meta-user/recipes-kernel/linux/linux-xlnx_%.bbappend
+  B: iic-8GB-1026-1802/project-spec/meta-user/recipes-kernel/linux/linux-xlnx_%.bbappend
+Files/Folders only in B (iic-8GB-1026-1802):
+/project-spec/meta-user/recipes-kernel/linux/linux-xlnx: user_2024-11-08-16-07-00.cfg
+/project-spec/meta-user/recipes-kernel/linux/linux-xlnx: user_2025-03-04-15-34-00.cfg
+```
 
-
-petalinux-package bsp -p ./iic-8GB-1026-1802 --output MY.BSP
-
----
-
-## PetaLinux Download
-Download the latest PetaLinux tools (version **2024.1** ) from [AMD’s official website](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools/2024-1.html)
 
