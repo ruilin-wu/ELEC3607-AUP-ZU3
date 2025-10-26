@@ -154,7 +154,7 @@ cd iic-8GB-1026-1802
 petalinux-package boot --u-boot --fpga --force
 ```
 
-**Note: There is a error in petalinux 2024.1 when we use petalinux-package.**
+**Note: There is a error in petalinux 2024.1 when we use petalinux-package bsp.**
 Go to "/your_petalinux_path/scripts/petalinux-package".
 
 Change as below:
