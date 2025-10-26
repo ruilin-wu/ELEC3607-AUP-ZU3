@@ -127,7 +127,11 @@ Run
 cd iic-8GB-1026-1802
 petalinux-config -c kernel
 ```
+
 First go to **Device Drivers-I2C support-I2C Hardware Bus support** to ensure **Cadence I2C Controller, Xilinx I2C Controller** are enabled.
+<p align="center">
+  <img src="./image/11.png" alt="11" width="600"/>
+</p>
 
 Compare linux-xlnx_%.bbappend in original folder and iic folder:
 <p align="center">
