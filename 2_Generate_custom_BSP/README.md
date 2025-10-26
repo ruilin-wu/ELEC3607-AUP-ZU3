@@ -45,13 +45,22 @@ For the above differences, we can make the following changes:
 cd iic-8GB-1026-1802
 petalinux-config
 ```
-Go to **Image Packaging Configuration-Root filesystem type**, select EXT4.
 
+
+Go to **Image Packaging Configuration-Root filesystem type**, change **Host name** and **Product name** to **petalinux-8GB**.
 <p align="center">
-  <img src="./image/1.png" alt="1" width="500"/>
+  <img src="./image/1.png" alt="2" width="500"/>
 </p>
 
+Go to **Firmware Version Configuration**, select EXT4.
 
+<p align="center">
+  <img src="./image/2.png" alt="2" width="500"/>
+</p>
+
+Save and exit.
+
+In the Project_core_configuration folder, we attached 3 config files. 
 #### Device Tree Related
 
 ```
