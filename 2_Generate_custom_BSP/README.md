@@ -152,9 +152,7 @@ Use the instructions in the next section to customize the custom library and gen
 Run
 ```
 petalinux-build
-cd ..
-petalinux-package bsp -p ./iic-8GB-1026-1802 --output iic-8GB.bsp
-cd iic-8GB-1026-1802
+petalinux-package bsp -p ./ --output ./iic-8GB.bsp
 petalinux-package boot --u-boot --fpga --force
 ```
 
