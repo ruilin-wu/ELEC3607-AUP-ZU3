@@ -116,9 +116,16 @@ First, we copy all the contents of system-user.dtsi in original to system-user.d
 ```
 - A: original-1026-1826/project-spec/meta-user/recipes-kernel/linux/linux-xlnx_%.bbappend
   B: iic-8GB-1026-1802/project-spec/meta-user/recipes-kernel/linux/linux-xlnx_%.bbappend
-Files/Folders only in B (iic-8GB-1026-1802):
+
+Files/Folders only in A (original-1026-1826):
 /project-spec/meta-user/recipes-kernel/linux/linux-xlnx: user_2024-11-08-16-07-00.cfg
 /project-spec/meta-user/recipes-kernel/linux/linux-xlnx: user_2025-03-04-15-34-00.cfg
 ```
+First go to **Device Drivers-I2C support-I2C Hardware Bus support** to ensure **Cadence I2C Controller, Xilinx I2C Controller** are enabled.
 
+Compare linux-xlnx_%.bbappend in  original folder and iic folder:
+<p align="center">
+  <img src="./image/8.png" alt="8" width="1200"/>
+</p>
 
+The official original customized two user.cfg files. We need to copy them to the corresponding folders of iic and modify linux-xlnx_%.bbappend to include them.
