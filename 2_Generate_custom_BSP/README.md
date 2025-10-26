@@ -60,7 +60,7 @@ Go to **Firmware Version Configuration**, select EXT4.
 
 Save and exit.
 
-In the Project_core_configuration folder, we attached 3 config files. 
+In the Project_core_configuration folder, we attached 3 config files. We modified the Root filesystem and username above. Now iic-8GB-1026-1802-new-config is almost identical to original-1026-1826-config
 #### Device Tree Related
 
 ```
