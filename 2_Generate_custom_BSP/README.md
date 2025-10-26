@@ -40,6 +40,16 @@ The full output file is in **project_spec_full_diff_20251026_195230.txt**. After
 - A: original-1026-1826/project-spec/configs/config
   B: iic-8GB-1026-1802/project-spec/configs/config
 ```
+For the above differences, we can make the following changes:
+```
+cd iic-8GB-1026-1802
+petalinux-config
+```
+Go to **Image Packaging Configuration-Root filesystem type**, select EXT4.
+
+<p align="center">
+  <img src="./image/1.png" alt="1" width="500"/>
+</p>
 
 
 #### Device Tree Related
