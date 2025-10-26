@@ -94,10 +94,10 @@ For plnx_syshw_data:
 
 For pl.dtsi:
 <p align="center">
-  <img src="./image/5.png" alt="5" width="600"/>
+  <img src="./image/5.png" alt="5" width="1200"/>
 </p>
 <p align="center">
-  <img src="./image/6.png" alt="6" width="600"/>
+  <img src="./image/6.png" alt="6" width="1200"/>
 </p>
 
 #### Kernel Customization and Configuration
