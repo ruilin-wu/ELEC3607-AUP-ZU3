@@ -155,7 +155,8 @@ petalinux-package boot --u-boot --fpga --force
 ```
 
 **Note: There is a error in petalinux 2024.1.**
-Go to "/your_petalinux_path/scripts/petalinux-package"
+Go to "/your_petalinux_path/scripts/petalinux-package".
+
 Change as below:
 <p align="center">
   <img src="./image/10.png" alt="10" width="1200"/>
