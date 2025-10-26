@@ -140,16 +140,23 @@ The official original customized two user.cfg files. We need to copy them to the
 ### Project building and BSP Packaging
 Run
 ```
+cd iic-8GB-1026-1802
 petalinux-config -c rootfs
 ```
 Use the instructions in the next section to customize the custom library and generate a complete project.
 
 Run
 ```
-cd iic-8GB-1026-1802
 petalinux-build
 cd ..
-petalinux-package bsp -p iic-8GB-1026-1802 --output iic-8GB.BSP
+petalinux-package bsp -p ./iic-8GB-1026-1802 --output iic-8GB.bsp
 cd iic-8GB-1026-1802
 petalinux-package boot --u-boot --fpga --force
 ```
+
+**Note: There is a error in petalinux 2024.1.**
+Go to "/your_petalinux_path/scripts/petalinux-package"
+Change as below:
+<p align="center">
+  <img src="./image/10.png" alt="10" width="1200"/>
+</p>
