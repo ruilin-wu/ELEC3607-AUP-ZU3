@@ -106,7 +106,7 @@ It's important to note that the file **project-spec/meta-user/recipes-bsp/device
 
 First, we copy all the contents of system-user.dtsi in original to system-user.dtsi in iic, and make the following changes at the end:
 <p align="center">
-  <img src="./image/7.png" alt="7" width="1200"/>
+  <img src="./image/12.png" alt="12" width="1200"/>
 </p>
 
 
