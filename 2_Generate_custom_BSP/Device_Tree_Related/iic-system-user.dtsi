@@ -71,6 +71,40 @@
 
 };
 
+&audio_audio_formatter_0 {
+	#sound-dai-cells = <0>;
+	status = "okay";
+};
+
+&audio_axi_iic_aic {
+	clock-frequency = <100000>;
+
+	tlv320aic3104: tlv320aic3104@18 {
+		#sound-dai-cells = <1>;
+		compatible = "ti,tlv320aic3104";
+		reg = <0x18>;
+		ai3x-micbias-vg = <1>;
+		ai3x-ocmv = <0>;
+		reset-gpios = <&audio_axi_gpio_0 0 GPIO_ACTIVE_LOW>;
+		AVDD-supply = <&ldo0>;
+		DVDD-supply = <&ldo1>;
+		IOVDD-supply = <&ldo2>;
+		DRVDD-supply = <&ldo3>;
+	};
+};
+
+&audio_i2s_transmitter_0 {
+	#sound-dai-cells = <0>;
+};
+
+&audio_axi_gpio_0 {
+	gpio-line-names = "AIC_nRST";
+	xlnx,dout-default = <0x1>;
+	xlnx,tri-default = <0x0>;
+};
+
+
+
 
 &sdhci0 {
 	no-1-8-v;
@@ -152,26 +186,7 @@
 	status = "disable";
 };
 
-&audio_axi_iic_aic {
-	clock-frequency = <100000>;
 
-	tlv320aic3104: tlv320aic3104@18 {
-		#sound-dai-cells = <1>;
-		compatible = "ti,tlv320aic3104";
-		reg = <0x18>;
-		ai3x-micbias-vg = <1>;
-		ai3x-ocmv = <0>;
-		reset-gpios = <&audio_axi_gpio_0 0 GPIO_ACTIVE_LOW>;
-		AVDD-supply = <&ldo0>;
-		DVDD-supply = <&ldo1>;
-		IOVDD-supply = <&ldo2>;
-		DRVDD-supply = <&ldo3>;
-	};
-};
-
-&audio_i2s_transmitter_0 {
-	#sound-dai-cells = <0>;
-};
 
 &modepin_gpio {
 	gpio-line-names = "PS_MODE0", "PS_MODE1", "PS_MODE2", "PS_MODE3";
@@ -192,25 +207,23 @@
 			  "PMOD1_4", "PMOD1_5", "PMOD1_6", "PMOD1_7";
 };
 
-&audio_axi_gpio_0 {
-	gpio-line-names = "AIC_nRST";
-	xlnx,dout-default = <0x1>;
-	xlnx,tri-default = <0x0>;
-};
+
 
 &grove_gpio {
 	gpio-line-names = "GROVE0_0", "GROVE0_1", "GROVE1_0", "GROVE1_1";
 };
 
+
 &rbp_gpio {
-	gpio-line-names = "RPI_GPIO0", "RPI_GPIO1", "RPI_GPIO2", "RPI_GPIO3",
+	gpio-line-names = "RPI_GPIO0", "RPI_GPIO1", 
 			  "RPI_GPIO4", "RPI_GPIO5", "RPI_GPIO6", "RPI_GPIO7",
 			  "RPI_GPIO8", "RPI_GPIO9", "RPI_GPIO10", "RPI_GPIO11",
 			  "RPI_GPIO12", "RPI_GPIO13", "RPI_GPIO14", "RPI_GPIO15",
 			  "RPI_GPIO16", "RPI_GPIO17", "RPI_GPIO18", "RPI_GPIO19",
 			  "RPI_GPIO20", "RPI_GPIO21", "RPI_GPIO22", "RPI_GPIO23",
-			  "RPI_GPIO24", "RPI_GPIO25";
+			  "RPI_GPIO24", "RPI_GPIO25", "RPI_GPIO26", "RPI_GPIO27";
 };
+
 
 &axi_iic_RPI {
 	clock-frequency = <100000>;
