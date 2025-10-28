@@ -42,19 +42,19 @@ petalinux-create project -n zu3_linux -s petalinux-8GB.bsp
 cd zu3_linux
 petalinux-config -c rootfs
 ```
-1.Go to **Filesystems Packages-console-network-openssh**, select 
+1.Go to **Filesystems Packages → console → network → openssh**, select 
 
 ![8](./image/8.png)
 
-2.Go to **Filesystems Packages-base-i2c-tools**, select 
+2.Go to **Filesystems Packages → base → i2c-tools**, select 
 
 ![2](./image/2.png)
 
-3.Go to **Filesystems Packages-libs-libgpiod**, select 
+3.Go to **Filesystems Packages → libs → libgpiod**, select 
 
 ![3](./image/3.png)
 
-4.Go to **Filesystems Packages-misc-packagegroup-core-buildessential**, select 
+4.Go to **Filesystems Packages → misc → packagegroup-core-buildessential**, select 
 
 ![5](./image/5.png)
 
@@ -71,6 +71,16 @@ Then go to User packages, select
 ![6](./image/6.png)
 
 ---
+
+6. Go to **Filesystems Packages → libs → multimedia**, select as below
+![9](./image/9.png)
+![10](./image/10.png)
+![11](./image/11.png)
+
+Go to **Filesystems Packages → multimedia → alsa-plugins**, select 
+![12](./image/12.png)
+
+
 
 ### 2. Build the Project
 

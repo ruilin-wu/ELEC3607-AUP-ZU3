@@ -52,7 +52,7 @@ Go to **Firmware Version Configuration**, change **Host name** and **Product nam
   <img src="./image/2.png" alt="2" width="500"/>
 </p>
 
-Go to **Image Packaging Configuration-Root filesystem type**, select EXT4.
+Go to **Image Packaging Configuration → Root filesystem type**, select EXT4.
 
 <p align="center">
   <img src="./image/1.png" alt="1" width="500"/>
@@ -128,12 +128,12 @@ cd iic-8GB-1026-1802
 petalinux-config -c kernel
 ```
 
-First go to **Device Drivers-I2C support-I2C Hardware Bus support** to ensure **Cadence I2C Controller, Xilinx I2C Controller** are enabled.
+First go to **Device Drivers → I2C support → I2C Hardware Bus support** to ensure **Cadence I2C Controller, Xilinx I2C Controller** are enabled.
 <p align="center">
   <img src="./image/11.png" alt="11" width="600"/>
 </p>
 
-Then go to **Device Drivers-Sound card support-Advanced Linux Sound Architecture-ALSA for SoC audio support-CODEC drivers-Texas Instruments TLV320AIC31xx CODECs**. Changes as below:
+Then go to **Device Drivers → Sound card support → Advanced Linux Sound Architecture → ALSA for SoC audio support → CODEC drivers → Texas Instruments TLV320AIC31xx CODECs**. Changes as below:
 
 <p align="center">
   <img src="./image/13.png" alt="13" width="600"/>
