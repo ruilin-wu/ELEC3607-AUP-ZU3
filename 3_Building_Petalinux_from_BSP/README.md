@@ -63,12 +63,15 @@ petalinux-config -c rootfs
 CONFIG_libfftw
 CONFIG_sox
 CONFIG_libgpiod-tools
+CONFIG_wireplumber
+CONFIG_pipewire
+CONFIG_pipewire-tools
 ```
 to **project-spec/meta-user/conf/user-rootfsconfig**.
 
 Then go to User packages, select 
 
-![13](./image/13.png)
+![14](./image/14.png)
 
 ---
 
