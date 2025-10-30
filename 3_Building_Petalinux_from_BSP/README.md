@@ -60,7 +60,7 @@ petalinux-config -c rootfs
 
 5.Add 
 ```
-CONFIG_libfftwf
+CONFIG_libfftw
 CONFIG_sox
 CONFIG_libgpiod-tools
 ```
@@ -68,7 +68,7 @@ to **project-spec/meta-user/conf/user-rootfsconfig**.
 
 Then go to User packages, select 
 
-![6](./image/6.png)
+![13](./image/13.png)
 
 ---
 
