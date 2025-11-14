@@ -136,7 +136,7 @@ First go to **Device Drivers → I2C support → I2C Hardware Bus support** to e
 Then go to **Device Drivers → Sound card support → Advanced Linux Sound Architecture → ALSA for SoC audio support → CODEC drivers → Texas Instruments TLV320AIC31xx CODECs**. Changes as below:
 
 <p align="center">
-  <img src="./image/13.png" alt="13" width="600"/>
+  <img src="./image/14.png" alt="14" width="600"/>
 </p>
 
 Compare linux-xlnx_%.bbappend in original folder and iic folder:
