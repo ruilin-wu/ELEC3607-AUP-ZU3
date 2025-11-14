@@ -133,6 +133,11 @@ First go to **Device Drivers → I2C support → I2C Hardware Bus support** to e
   <img src="./image/11.png" alt="11" width="600"/>
 </p>
 
+Then go to **Device Drivers → Sound card support → Advanced Linux Sound Architecture → ALSA for SoC audio support**. Changes as below:
+<p align="center">
+  <img src="./image/15.png" alt="15" width="600"/>
+</p>
+
 Then go to **Device Drivers → Sound card support → Advanced Linux Sound Architecture → ALSA for SoC audio support → CODEC drivers → Texas Instruments TLV320AIC31xx CODECs**. Changes as below:
 
 <p align="center">

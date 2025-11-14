@@ -83,6 +83,8 @@ Then go to User packages, select
 Go to **Filesystems Packages → multimedia → alsa-plugins**, select 
 ![12](./image/12.png)
 
+Go to **Filesystems Packages → console → utils → alsa-utils**, select 
+![15](./image/15.png)
 
 
 ### 2. Build the Project
