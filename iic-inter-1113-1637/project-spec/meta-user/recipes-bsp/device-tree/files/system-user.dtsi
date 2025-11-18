@@ -1,0 +1,271 @@
+/include/ "system-conf.dtsi"
+#include <dt-bindings/phy/phy.h>
+
+/ {
+	chosen {
+		bootargs = "earlycon console=ttyPS0,115200 console=tty0 uio_pdrv_genirq.of_id=generic-uio clk_ignore_unused rootwait root=/dev/mmcblk0p2 rw";
+		stdout-path = "serial0:115200n8";
+	};
+
+	/* ============================
+	 *  Fixed Clocks
+	 * ============================ */
+	dp_clk: psgtr_dp_clock {
+		compatible = "fixed-clock";
+		#clock-cells = <0>;
+		clock-frequency = <27000000>;
+	};
+
+	usb_clk: psgtr_usb_clock {
+		compatible = "fixed-clock";
+		#clock-cells = <0>;
+		clock-frequency = <100000000>;
+	};
+
+	/* ============================
+	 *  Regulators for TLV320AIC3104
+	 * ============================ */
+	ldo0: ldo@1 {
+		compatible = "regulator-fixed";
+		regulator-name = "VCCp3V3_AIC_AVDD";
+		regulator-min-microvolt = <3300000>;
+		regulator-max-microvolt = <3300000>;
+		regulator-always-on;
+	};
+
+	ldo1: ldo@2 {
+		compatible = "regulator-fixed";
+		regulator-name = "VCCp1V8_AIC_DVDD";
+		regulator-min-microvolt = <1800000>;
+		regulator-max-microvolt = <1800000>;
+		regulator-always-on;
+	};
+
+	ldo2: ldo@3 {
+		compatible = "regulator-fixed";
+		regulator-name = "VCCp1V8_AIC_IOVDD";
+		regulator-min-microvolt = <1800000>;
+		regulator-max-microvolt = <1800000>;
+		regulator-always-on;
+	};
+
+	ldo3: ldo@4 {
+		compatible = "regulator-fixed";
+		regulator-name = "VCCp3V3_AIC_DRVDD";
+		regulator-min-microvolt = <3300000>;
+		regulator-max-microvolt = <3300000>;
+		regulator-always-on;
+	};
+
+	/* ============================
+	 *  SIMPLE AUDIO CARD
+	 * ============================ */
+	sound {
+		compatible = "simple-audio-card";
+		simple-audio-card,name = "AIC3104";
+		simple-audio-card,format = "i2s";
+		simple-audio-card,bitclock-master = <&audio_audio_formatter_0>;
+		simple-audio-card,frame-master  = <&audio_audio_formatter_0>;
+
+		simple-audio-card,widgets =
+			"Line", "Line Out",
+			"Microphone", "Mic Jack";
+		simple-audio-card,routing =
+			"Line Out", "LLOUT",
+			"Line Out", "RLOUT",
+			"Mic Jack", "MIC3L",
+			"Mic Jack", "MIC3R";
+
+		simple-audio-card,cpu {
+			sound-dai = <&audio_audio_formatter_0>;
+			dai-tdm-slot-num = <2>;
+			dai-tdm-slot-width = <32>;
+		};
+
+		simple-audio-card,codec {
+			sound-dai = <&tlv320aic3104 0>;
+			clocks = <&misc_clk_0>;
+			clock-names = "mclk";
+		};
+	};
+};
+
+/* ============================
+ *  TLV320AIC3104 codec node
+ * ============================ */
+&audio_axi_iic_aic {
+	status = "okay";
+	clock-frequency = <100000>;
+
+	tlv320aic3104: tlv320aic3104@18 {
+		#sound-dai-cells = <1>;
+		compatible = "ti,tlv320aic3104";
+		reg = <0x18>;
+		ai3x-micbias-vg = <1>;
+		ai3x-ocmv = <0>;
+		reset-gpios = <&audio_axi_gpio_0 0 GPIO_ACTIVE_LOW>;
+		AVDD-supply = <&ldo0>;
+		DVDD-supply = <&ldo1>;
+		IOVDD-supply = <&ldo2>;
+		DRVDD-supply = <&ldo3>;
+	};
+};
+
+
+&audio_audio_formatter_0 {
+	status = "okay";
+	#sound-dai-cells = <0>;
+	/delete-property/ xlnx,snd-pcm;
+};
+
+
+/* ============================
+ *  I2S TX/RX
+ * ============================ */
+&audio_i2s_transmitter_0 {
+	#sound-dai-cells = <0>;
+	status = "okay";
+};
+
+&audio_i2s_receiver_0 {
+	#sound-dai-cells = <0>;
+	status = "okay";
+};
+
+
+
+
+
+
+
+
+&audio_axi_gpio_0 {
+	gpio-line-names = "AIC_nRST";
+	xlnx,dout-default = <0x1>;
+	xlnx,tri-default = <0x0>;
+};
+
+
+&sdhci0 {
+	no-1-8-v;
+	disable-wp;
+};
+
+&psgtr {
+      /* dp 0-1, usb0, usb1 */
+      clocks = <&dp_clk>, <&usb_clk>;
+      clock-names = "ref0", "ref1";
+};
+
+&zynqmp_dpsub {
+	status = "okay";
+	phys = <&psgtr 1 PHY_TYPE_DP 0 0>, <&psgtr 0 PHY_TYPE_DP 1 0>;
+	phy-names = "dp-phy0", "dp-phy1";
+};
+
+&usb0 {
+	status = "okay";
+	phys = <&psgtr 2 PHY_TYPE_USB3 0 1>;
+};
+
+&dwc3_0 {
+	status = "okay";
+	dr_mode = "host";
+	snps,usb3_lpm_capable;
+	phy-names = "usb3-phy";
+	maximum-speed = "super-speed";
+};
+
+&usb1 {
+	status = "okay";
+	phys = <&psgtr 3 PHY_TYPE_USB3 1 1>;
+};
+
+&dwc3_1 {
+	status = "okay";
+	dr_mode = "host";
+	snps,usb3_lpm_capable;
+	phy-names = "usb3-phy";
+	maximum-speed = "super-speed";
+};
+
+&v_frmbuf_wr_0 {
+	status = "disable";
+};
+
+&PWM_0 {
+	compatible = "generic-uio";
+};
+
+&system_management_wiz_0 {
+	xlnx,channels {
+		#address-cells = <1>;
+		#size-cells = <0>;
+		channel@8 {
+			reg = <0>;
+		};
+		channel@9 {
+			reg = <9>;
+		};
+		channel@10 {
+			reg = <10>;
+		};
+	};
+};
+
+&i2c0 {
+	bmp180: bmp180@77 {
+		compatible = "bosch,bmp180";
+		reg = <0x77>;
+		vddd-supply = <&ldo3>;
+		vdda-supply = <&ldo0>;
+	};
+};
+
+&zynqmp_dp_snd_card0 {
+	status = "disable";
+};
+
+
+
+&modepin_gpio {
+	gpio-line-names = "PS_MODE0", "PS_MODE1", "PS_MODE2", "PS_MODE3";
+};
+
+&Pmod_JA {
+	gpio-line-names = "PMOD0_0", "PMOD0_1", "PMOD0_2", "PMOD0_3",
+			  "PMOD0_4", "PMOD0_5", "PMOD0_6", "PMOD0_7";
+};
+
+&Pmod_JAB {
+	gpio-line-names = "PMOD01_0", "PMOD01_1", "PMOD01_2", "PMOD01_3",
+			  "PMOD01_4", "PMOD01_5";
+};
+
+&Pmod_JB {
+	gpio-line-names = "PMOD1_0", "PMOD1_1", "PMOD1_2", "PMOD1_3",
+			  "PMOD1_4", "PMOD1_5", "PMOD1_6", "PMOD1_7";
+};
+
+
+
+&grove_gpio {
+	gpio-line-names = "GROVE0_0", "GROVE0_1", "GROVE1_0", "GROVE1_1";
+};
+
+
+&rbp_gpio {
+	gpio-line-names = "RPI_GPIO0", "RPI_GPIO1", 
+			  "RPI_GPIO4", "RPI_GPIO5", "RPI_GPIO6", "RPI_GPIO7",
+			  "RPI_GPIO8", "RPI_GPIO9", "RPI_GPIO10", "RPI_GPIO11",
+			  "RPI_GPIO12", "RPI_GPIO13", "RPI_GPIO14", "RPI_GPIO15",
+			  "RPI_GPIO16", "RPI_GPIO17", "RPI_GPIO18", "RPI_GPIO19",
+			  "RPI_GPIO20", "RPI_GPIO21", "RPI_GPIO22", "RPI_GPIO23",
+			  "RPI_GPIO24", "RPI_GPIO25", "RPI_GPIO26", "RPI_GPIO27";
+};
+
+
+&axi_iic_RPI {
+	clock-frequency = <100000>;
+	status = "okay";
+};

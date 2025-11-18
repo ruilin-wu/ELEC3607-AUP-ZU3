@@ -1,0 +1,34 @@
+menu "user packages " 
+config libfftw  
+	 bool "libfftw"
+	 help
+	
+config libgpiod-tools  
+	 bool "libgpiod-tools"
+	 help
+	
+config gpio-demo  
+	 bool "gpio-demo"
+	 help
+	
+config peekpoke  
+	 bool "peekpoke"
+	 help
+	
+config pipewire  
+	 bool "pipewire"
+	 help
+	
+config pipewire-tools  
+	 bool "pipewire-tools"
+	 help
+	
+config sox  
+	 bool "sox"
+	 help
+	
+config wireplumber  
+	 bool "wireplumber"
+	 help
+	
+endmenu
