@@ -1,0 +1,11 @@
+#Note: Mention Each package in individual line
+#These packages will get added into rootfs menu entry
+
+CONFIG_gpio-demo
+CONFIG_peekpoke
+CONFIG_libfftw
+CONFIG_sox
+CONFIG_libgpiod-tools
+CONFIG_wireplumber
+CONFIG_pipewire
+CONFIG_pipewire-tools
