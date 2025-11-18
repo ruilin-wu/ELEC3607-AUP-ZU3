@@ -7,9 +7,7 @@
 		stdout-path = "serial0:115200n8";
 	};
 
-	/* ============================
-	 *  Fixed Clocks
-	 * ============================ */
+	/* Fixed Clocks */
 	dp_clk: psgtr_dp_clock {
 		compatible = "fixed-clock";
 		#clock-cells = <0>;
@@ -22,9 +20,7 @@
 		clock-frequency = <100000000>;
 	};
 
-	/* ============================
-	 *  Regulators for TLV320AIC3104
-	 * ============================ */
+	/* Regulators for TLV320AIC3104 */
 	ldo0: ldo@1 {
 		compatible = "regulator-fixed";
 		regulator-name = "VCCp3V3_AIC_AVDD";
@@ -57,9 +53,7 @@
 		regulator-always-on;
 	};
 
-	/* ============================
-	 *  SIMPLE AUDIO CARD
-	 * ============================ */
+	/* SIMPLE AUDIO CARD */
 	sound {
 		compatible = "simple-audio-card";
 		simple-audio-card,name = "AIC3104";
@@ -90,9 +84,7 @@
 	};
 };
 
-/* ============================
- *  TLV320AIC3104 codec node
- * ============================ */
+/* TLV320AIC3104 codec node */
 &audio_axi_iic_aic {
 	status = "okay";
 	clock-frequency = <100000>;
@@ -119,9 +111,7 @@
 };
 
 
-/* ============================
- *  I2S TX/RX
- * ============================ */
+/* I2S TX/RX */
 &audio_i2s_transmitter_0 {
 	#sound-dai-cells = <0>;
 	status = "okay";

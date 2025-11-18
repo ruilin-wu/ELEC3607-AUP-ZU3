@@ -1,0 +1,81 @@
+patalinux-8GB:~$ dmesg | grep -i aic
+patalinux-8GB:~$ dmesg | grep -i sound
+[    0.669025] Advanced Linux Sound Architecture Driver Initialized.
+[    0.829393] xlnx_formatter_pcm 800d0000.audio_formatter: sound card device will use DAI li
+[    0.829470] xlnx_formatter_pcm 800d0000.audio_formatter: sound card device will use DAI li
+[    3.044248] xilinx-dp-snd-pcm zynqmp_dp_snd_pcm0: Xilinx DisplayPort Sound PCM probed
+[    3.052319] xilinx-dp-snd-pcm zynqmp_dp_snd_pcm1: Xilinx DisplayPort Sound PCM probed
+[   20.202539] platform sound: deferred probe pending
+patalinux-8GB:~$ dmesg | grep -i audio
+[    0.828090] usbcore: registered new interface driver snd-usb-audio
+[    0.829393] xlnx_formatter_pcm 800d0000.audio_formatter: sound card device will use DAI li
+[    0.829470] xlnx_formatter_pcm 800d0000.audio_formatter: sound card device will use DAI li
+[    0.829569] xlnx_formatter_pcm 800d0000.audio_formatter: pcm platform device registered
+[   11.936930] xlnx_formatter_pcm 800d0000.audio_formatter: stream 0 : format = 1 mode = 3 ch
+[   11.957278] xlnx_formatter_pcm 800d0000.audio_formatter: stream 0 : format = 1 mode = 3 ch
+[   11.959464] xlnx_formatter_pcm 800d0000.audio_formatter: stream 1 : format = 1 mode = 1 ch
+[   11.999369] xlnx_formatter_pcm 800d0000.audio_formatter: stream 0 : format = 1 mode = 3 ch
+[   12.025140] xlnx_formatter_pcm 800d0000.audio_formatter: stream 0 : format = 1 mode = 3 ch
+[   12.026145] xlnx_formatter_pcm 800d0000.audio_formatter: stream 0 : format = 1 mode = 3 ch
+patalinux-8GB:~$ dmesg | grep -i tlv
+patalinux-8GB:~$ dmesg | grep -i codec
+[    3.025256] xilinx-dp-snd-codec fd4a0000.display:zynqmp-dp-snd-codec0: Failed to get requi
+[    3.034758] xilinx-dp-snd-codec: probe of fd4a0000.display:zynqmp-dp-snd-codec0 failed wit
+patalinux-8GB:~$ dmesg | grep -i simple
+[    0.789711] usbcore: registered new interface driver usb_serial_simple
+patalinux-8GB:~$ cat /proc/asound/cards
+ 0 [xlnxi2ssndcard0]: xlnx-i2s-snd-ca - xlnx-i2s-snd-card-0
+                      xlnx-i2s-snd-card-0
+patalinux-8GB:~$ aplay -l
+**** List of PLAYBACK Hardware Devices ****
+card 0: xlnxi2ssndcard0 [xlnx-i2s-snd-card-0], device 0: (null) snd-soc-dummy-dai-0 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+patalinux-8GB:~$ grep AIC /boot/config-$(uname -r)
+grep: /boot/config-6.6.10-xilinx-v2024.1-g3af4295e00ef: No such file or directory
+patalinux-8GB:~$ ^C
+patalinux-8GB:~$ fdtdump /boot/system.dtb | grep "xlnx,snd-pcm"
+
+**** fdtdump is a low-level debugging tool, not meant for general use.
+**** If you want to decompile a dtb, you probably want
+****     dtc -I dtb -O dts <filename>
+
+            xlnx,snd-pcm = <0x00000027>;
+            xlnx,snd-pcm = <0x00000027>;
+patalinux-8GB:~$ dmesg | grep -i aic3x
+patalinux-8GB:~$ i2cdetect -y 2
+Error: Could not open file `/dev/i2c-2': Permission denied
+Run as root?
+patalinux-8GB:~$ sudo i2cdetect -y 2
+
+We trust you have received the usual lecture from the local System
+Administrator. It usually boils down to these three things:
+
+    #1) Respect the privacy of others.
+    #2) Think before you type.
+    #3) With great power comes great responsibility.
+
+For security reasons, the password you type will not be visible.
+
+Password:
+     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
+00:                         -- -- -- -- -- -- -- --
+10: -- -- -- -- -- -- -- -- UU -- -- -- -- -- -- --
+20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+30: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+40: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+70: -- -- -- -- -- -- -- --
+patalinux-8GB:~$
+patalinux-8GB:~$ cat /sys/kernel/debug/regulator/regulator_summary | grep AIC
+cat: /sys/kernel/debug/regulator/regulator_summary: Permission denied
+patalinux-8GB:~$ sudo cat /sys/kernel/debug/regulator/regulator_summary | grep AIC
+ VCCp3V3_AIC_AVDD                 1    1      0 unknown  3300mV     0mA  3300mV  3300mV
+ VCCp1V8_AIC_DVDD                 1    1      0 unknown  1800mV     0mA  1800mV  1800mV
+ VCCp1V8_AIC_IOVDD                1    1      0 unknown  1800mV     0mA  1800mV  1800mV
+ VCCp3V3_AIC_DRVDD                1    1      0 unknown  3300mV     0mA  3300mV  3300mV
+patalinux-8GB:~$ cat /proc/asound/cards
+ 0 [xlnxi2ssndcard0]: xlnx-i2s-snd-ca - xlnx-i2s-snd-card-0
+                      xlnx-i2s-snd-card-0
+patalinux-8GB:~$ cat /sys/kernel/debug/asoc/cards 2>/dev/null
